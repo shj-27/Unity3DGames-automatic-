@@ -4,17 +4,22 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    CharacterMove characterMove;
 
-    // Start is called before the first frame update
-    void Start()
+    
+
+    private CharacterMovement characterMovement;
+    private CharacterInput characterInput;
+
+    private void Awake()
     {
-        
+        characterMovement = GetComponent<CharacterMovement>();
+        characterInput = GetComponent<CharacterInput>();
     }
 
-    // Update is called once per frame
-    void Awake()
+    private void Update()
     {
-        characterMove = GetComponent<CharacterMove>();
+        Vector3 a = characterInput.Inputvector;
+        characterMovement.Moving(a);
     }
+
 }
