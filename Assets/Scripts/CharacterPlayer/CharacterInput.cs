@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class CharacterInput : MonoBehaviour
 {
-    CharacterMove characterMove;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -13,8 +11,8 @@ public class Character : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Awake()
+    void Update()
     {
-        characterMove = GetComponent<CharacterMove>();
+        
     }
 }
