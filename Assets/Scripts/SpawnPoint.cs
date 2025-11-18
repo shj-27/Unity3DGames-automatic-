@@ -14,8 +14,8 @@ public class SpawnPoint : MonoBehaviour
 
 
     [Header("아이템")]
-    [SerializeField] private ItemObject[] itemObjects;       // 스폰할 아이템들
-    private GameObject pool;                                    
+    [SerializeField] public ItemObject[] itemObjects;       // 스폰할 아이템들
+    private GameObject pool;
 
 
 
@@ -81,32 +81,64 @@ public class SpawnPoint : MonoBehaviour
         }
         return null; // 다 사용 중이면 null
     }
-   
+
     IEnumerator SpawnRoutine()
     {
         while (true)
         {
             ItemObject item = itemObjects[Random.Range(0, itemObjects.Length)];
             GameObject obj = GetItemFromPool(item);
-
             if (obj != null)
             {
-                //groundParent의 자식 중 하나를 랜덤으로 골라 그 위에 드랍!
+                Vector3 spawnPos;
+
                 if (groundParent.childCount > 0)
                 {
-                    Transform randomGround = groundParent.GetChild(Random.Range(0, groundParent.childCount));   //랜덤 위치!
-                    obj.transform.position = randomGround.position + Vector3.up * 0.5f; //랜덤한 에서 스폰생산
+                    // 랜덤한 땅 오브젝트 선택
+                    Transform randomGround = groundParent.GetChild(Random.Range(0, groundParent.childCount));
+
+                    // ← 여기만 바꿨음! 진짜 랜덤 위치로!
+                    spawnPos = GetRandomPositionOnGround(randomGround);
                 }
                 else
                 {
-                    obj.transform.position = spawnPoint.position + Vector3.up * 0.5f;
+                    spawnPos = spawnPoint.position + Vector3.up * 0.5f;
                 }
 
+                obj.transform.position = spawnPos;
                 obj.SetActive(true);
             }
 
             yield return new WaitForSeconds(spawnDelay);
         }
+    }
+
+    private Vector3 GetRandomPositionOnGround(Transform ground)
+    {
+        // 1. Collider 있으면 그 범위 안에서 랜덤
+        if (ground.TryGetComponent<Collider>(out var col))
+        {
+            Bounds bounds = col.bounds;
+            return new Vector3(
+                Random.Range(bounds.min.x, bounds.max.x),
+                bounds.max.y + 0.5f,
+                Random.Range(bounds.min.z, bounds.max.z)
+            );
+        }
+
+        // 2. Renderer 있으면 그 범위 사용
+        if (ground.TryGetComponent<Renderer>(out var ren))
+        {
+            Bounds bounds = ren.bounds;
+            return new Vector3(
+                Random.Range(bounds.min.x, bounds.max.x),
+                bounds.max.y + 0.5f,
+                Random.Range(bounds.min.z, bounds.max.z)
+            );
+        }
+
+        // 3. 둘 다 없으면 중심에
+        return ground.position + Vector3.up * 0.5f;
     }
 
 }

@@ -5,7 +5,13 @@ using UnityEngine;
 public class CharacterControllers : MonoBehaviour
 {
 
-
+    public enum EState
+    {
+        Idle,
+        Walk,
+        Jump
+    }
+    EState state;
     [SerializeField] private float speed; // 이동 속도
     [SerializeField] private float rotateSpeed; // 회전 속도
     [SerializeField] private float jumpPower;   // 점프 세기
@@ -17,7 +23,10 @@ public class CharacterControllers : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private bool isGrounded => Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, groundCheckDistance, groundLayer);
 
-    
+
+    [Header("초기 위치 설정")]
+    [SerializeField] private Transform startPoint;
+
     private float ySpeed = 0f; // 수직 하강 속도
     private CharacterController cc;
 
@@ -45,9 +54,10 @@ public class CharacterControllers : MonoBehaviour
         ApplyMove();    // 이동확인
     }
 
-   
+
     private void Move()
     {
+        state = EState.Walk;
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
@@ -70,8 +80,9 @@ public class CharacterControllers : MonoBehaviour
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            state = EState.Jump;
             moveDirection.y = jumpPower;//점프
-           
+
         }
     }
 
@@ -86,6 +97,7 @@ public class CharacterControllers : MonoBehaviour
         {
             moveDirection.y = -1f;  // 땅에 붙어 있게 살짝 내림
         }
+        state = EState.Idle;
     }
 
     // 최종 이동
@@ -96,11 +108,34 @@ public class CharacterControllers : MonoBehaviour
         float horizontalSpeed = new Vector3(moveDirection.x, 0, moveDirection.z).sqrMagnitude;
         ani.SetBool("isMoving", horizontalSpeed > 0.01f);
         ani.SetBool("isJumping", !isGrounded && moveDirection.y > 0.1f);
+
     }
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = isGrounded ? Color.green : Color.red;
         Gizmos.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * groundCheckDistance);
+    }
+
+    public void ResetToStartPosition()
+    {
+        if (startPoint != null)
+        {
+            // 위치 + 회전 완벽 리셋
+            transform.position = startPoint.position;
+            transform.rotation = startPoint.rotation;
+        }
+        else
+        {
+            // startPoint 없으면 기본 (0,0,0)
+            transform.position = Vector3.zero;
+            transform.rotation = Quaternion.identity;
+        }
+
+        // 물리 상태 완전 리셋
+        moveDirection = Vector3.zero;
+        ySpeed = 0f;
+        if (cc != null) cc.enabled = false;  // 순간 이동 방지
+        cc.enabled = true;
     }
 }
 

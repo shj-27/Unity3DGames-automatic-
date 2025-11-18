@@ -15,4 +15,5 @@ MonoBehaviour:
   itemName: ItemB
   prefabs: {fileID: 6920753395495094496, guid: a5898ee1e49676346a12087e0f3775a4, type: 3}
   prefabsBox: {fileID: 0}
-  itemCount: 5
+  itemText: {fileID: 0}
+  itemCount: 10
