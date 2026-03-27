@@ -1,0 +1,4 @@
+repository "A_SHJ_27 2026-02-27_10-57-12/A_SHJ_27@14568607755367@cloud"
+  path "/"
+    br "/main"
+    co "/main"
