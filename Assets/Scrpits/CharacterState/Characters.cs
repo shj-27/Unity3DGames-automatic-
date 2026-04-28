@@ -1,53 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class CharacterStateMachine 
-{
-    private Dictionary<CharacterStateType, ICharacterState> states
-        = new Dictionary<CharacterStateType, ICharacterState>();
 
-    public ICharacterState CurrentState { get; private set; }
 
-    // 상태 등록
-    public void RegisterState(CharacterStateType type, ICharacterState state)
-    {
-        states[type] = state;
-    }
-
-    // enum으로 상태 변경
-    public void ChangeState(CharacterStateType type)
-    {
-        if (CurrentState != null)
-            CurrentState.Exit();
-
-        CurrentState = states[type];
-        CurrentState.Enter();
-    }
-
-    public void Update()
-    {
-        CurrentState?.Update();
-    }
-}
-
+//모든 랜덤을 이어 받아서 캐릭터의 정보를 확정적으로 선언하는 스크립트
+//캐릭터의 능력치를 받는게 아님 여기에서는 선언한 뒤에 캐릭터 라는 오브젝트는 해당 값을 줘는 역할
 public class Characters : MonoBehaviour
 {
-    private CharacterStateMachine stateMachine;
+    [SerializeField] private int minRange;
+    [SerializeField] private int maxRange;
 
-    private void Awake()
+    public int GetRandomRange()
     {
-        stateMachine = new CharacterStateMachine();
-
-        stateMachine.RegisterState(CharacterStateType.Idle, new IdleState(this));
-        stateMachine.RegisterState(CharacterStateType.Move, new MoveState(this));
-        stateMachine.RegisterState(CharacterStateType.Attack, new AttackState(this));
-        stateMachine.RegisterState(CharacterStateType.Gather, new GatherState(this));
-
-        stateMachine.ChangeState(CharacterStateType.Idle);
-    }
-
-    private void Update()
-    {
-        stateMachine.Update();
+        minRange = 1;
+        maxRange = 5;
+        return Randoms.RandomInt(minRange, maxRange);
     }
 }

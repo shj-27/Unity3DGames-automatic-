@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class AttackState : ICharacterState
 {
-    private Characters character;
+    private Actions character;
 
-    public AttackState(Characters character)
+    public AttackState(Actions character)
     {
         this.character = character;
     }
 
     public void Enter() { }
     public void Update() { }
+    public void FixedUpdate() { }  
+    public void LateUpdate() { }  
     public void Exit() { }
 }

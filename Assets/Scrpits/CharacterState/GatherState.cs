@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class GatherState : ICharacterState
 {
-    private Characters character;
+    private Actions character;
 
-    public GatherState(Characters character)
+    public GatherState(Actions character)
     {
         this.character = character;
     }
 
+
     public void Enter() { }
     public void Update() { }
+    public void FixedUpdate() { }
+    public void LateUpdate() { }
     public void Exit() { }
 }
