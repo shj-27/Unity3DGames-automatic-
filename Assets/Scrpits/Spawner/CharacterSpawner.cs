@@ -3,26 +3,30 @@ using UnityEngine.UI;
 
 public class CharacterSpawner : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private Button spawnButton;
+    [SerializeField] private Autos autos;
 
-    [Header("Spawn Setting")]
-    [SerializeField] private GameObject spawnerPrefab;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField]
+    private CharacterInventory inventory;
 
     void Start()
     {
-        // 버튼 클릭 이벤트 코드로 연결
-        spawnButton.onClick.AddListener(CreateSpawner);
+        StartCoroutine(
+            autos.AutoSpawn(
+                7f,
+                inventory.MaxSlot,
+                inventory.GetCurrentCount,
+                SpawnCharacter
+            )
+        );
     }
 
-    void CreateSpawner()
+    void SpawnCharacter()
     {
-        Instantiate(spawnerPrefab, spawnPoint.position, Quaternion.identity);
-    }
+        inventory.AddCharacter();
 
-    void OnDestroy()
-    {
-        spawnButton.onClick.RemoveListener(CreateSpawner);
+        Debug.Log(
+            "현재 개수 : " +
+            inventory.GetCurrentCount()
+        );
     }
 }

@@ -15,7 +15,7 @@ public class Autos : MonoBehaviour
 
     //Func  = 물어보는 역할
     //Action = 시키는 역할
-
+    // 외부 스크립트가 읽는 락 상태
     public IEnumerator AutoSpawn(
         float interval,
         int maxAmount,
@@ -24,10 +24,8 @@ public class Autos : MonoBehaviour
     {
         while (true)
         {
-            // 현재 개수 물어보기
             if (getCurrentAmount() < maxAmount)
             {
-                // 생성 시키기
                 spawnAction();
             }
 
