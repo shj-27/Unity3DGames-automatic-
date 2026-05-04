@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 public class AttackRange : MonoBehaviour
 {
     [SerializeField] private float attackRange;
-    [SerializeField] private Characters characters; // 연결
+    [SerializeField] private CharacterFactory characters; // 연결
     private SphereCollider rangeCollider;
 
     
@@ -22,8 +22,7 @@ public class AttackRange : MonoBehaviour
 
     void Start()
     {
-        // Characters에서 값 받아오기
-        attackRange = characters.GetRandomRange();
+        
     }
 
     public void SetRange(float value)

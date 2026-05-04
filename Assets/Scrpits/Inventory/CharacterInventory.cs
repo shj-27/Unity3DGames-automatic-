@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class CharacterInventory : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class CharacterInventory : MonoBehaviour
     // 총 가방 크기
     public int MaxSlot { get; private set; }
 
-    // 현재 개수
-    private int currentCharacterCount = 0;
+    // 캐릭터 보관
+    [SerializeField] private List<Character> characters = new List<Character>();
 
     void Start()
     {
@@ -25,36 +26,28 @@ public class CharacterInventory : MonoBehaviour
             addSlot;
     }
 
-    public int GetCurrentCount()
-    {
-        return currentCharacterCount;
-    }
-
     public bool IsFullLocked()
     {
-        return currentCharacterCount >= MaxSlot;
+        return characters.Count >= MaxSlot;
     }
 
-    public void AddCharacter()
+    public void AddCharacter(Character character)
     {
+        if (character == null)
+        {
+            Debug.LogError("캐릭터 null");
+            return;
+        }
+
         if (IsFullLocked())
             return;
 
-        currentCharacterCount++;
-    }
-
-    public void RemoveCharacter()
-    {
-        if (currentCharacterCount > 0)
-        {
-            currentCharacterCount--;
-        }
+        characters.Add(character);
     }
 
     public void AddSlot(int amount)
     {
         addSlot += amount;
-
         UpdateMaxSlot();
     }
 }

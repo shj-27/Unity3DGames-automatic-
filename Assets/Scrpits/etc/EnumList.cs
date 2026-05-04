@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+//기타 타입
+public enum EntityType
+{
+    Character,
+    Item,
+    NPC,
+    Enemy
+}
 public enum CharacterStateType
 {
     None = 0,
@@ -31,3 +39,14 @@ public enum Talent
     Normal = 2,
     Poor = 3    // 경험치 요구량 가장 높음
 }
+
+public enum JobType
+{
+    None = 0,
+    Warrior = 1, // 전사
+    Mage = 2,    // 마법사
+    Swordsman = 3, // 검사
+    Archer = 4,  // 궁수
+    Rogue = 5    // 도적
+}
+

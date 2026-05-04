@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adcda1703ec0634c8f45d472b5d9617, type: 3}
+  m_Name: Mage
+  m_EditorClassIdentifier: 
+  jobType: 2
+  hp:
+    normal: {x: 100, y: 150}
+    rare: {x: 150, y: 200}
+    unique: {x: 200, y: 250}
+    epic: {x: 250, y: 300}
+    legend: {x: 300, y: 350}
+  mp:
+    normal: {x: 50, y: 100}
+    rare: {x: 100, y: 200}
+    unique: {x: 150, y: 300}
+    epic: {x: 200, y: 400}
+    legend: {x: 250, y: 500}
+  str:
+    normal: {x: 1, y: 10}
+    rare: {x: 1, y: 10}
+    unique: {x: 1, y: 10}
+    epic: {x: 1, y: 10}
+    legend: {x: 1, y: 10}
+  agi:
+    normal: {x: 1, y: 10}
+    rare: {x: 1, y: 10}
+    unique: {x: 1, y: 10}
+    epic: {x: 1, y: 10}
+    legend: {x: 1, y: 10}
+  intel:
+    normal: {x: 5, y: 10}
+    rare: {x: 5, y: 20}
+    unique: {x: 5, y: 30}
+    epic: {x: 5, y: 40}
+    legend: {x: 5, y: 50}
+  wis:
+    normal: {x: 5, y: 10}
+    rare: {x: 5, y: 20}
+    unique: {x: 5, y: 30}
+    epic: {x: 5, y: 40}
+    legend: {x: 5, y: 50}
+  cha:
+    normal: {x: 0, y: 10}
+    rare: {x: 0, y: 10}
+    unique: {x: 0, y: 10}
+    epic: {x: 0, y: 10}
+    legend: {x: 0, y: 10}

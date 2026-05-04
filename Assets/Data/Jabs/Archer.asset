@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adcda1703ec0634c8f45d472b5d9617, type: 3}
+  m_Name: Archer
+  m_EditorClassIdentifier: 
+  jobType: 4
+  hp:
+    normal: {x: 100, y: 150}
+    rare: {x: 150, y: 200}
+    unique: {x: 200, y: 250}
+    epic: {x: 250, y: 300}
+    legend: {x: 300, y: 350}
+  mp:
+    normal: {x: 0, y: 0}
+    rare: {x: 0, y: 0}
+    unique: {x: 0, y: 0}
+    epic: {x: 0, y: 0}
+    legend: {x: 0, y: 0}
+  str:
+    normal: {x: 10, y: 20}
+    rare: {x: 15, y: 30}
+    unique: {x: 20, y: 40}
+    epic: {x: 25, y: 50}
+    legend: {x: 30, y: 60}
+  agi:
+    normal: {x: 25, y: 30}
+    rare: {x: 35, y: 40}
+    unique: {x: 45, y: 50}
+    epic: {x: 55, y: 60}
+    legend: {x: 65, y: 70}
+  intel:
+    normal: {x: 5, y: 20}
+    rare: {x: 5, y: 20}
+    unique: {x: 5, y: 20}
+    epic: {x: 5, y: 20}
+    legend: {x: 5, y: 20}
+  wis:
+    normal: {x: 5, y: 20}
+    rare: {x: 5, y: 20}
+    unique: {x: 5, y: 20}
+    epic: {x: 5, y: 20}
+    legend: {x: 5, y: 20}
+  cha:
+    normal: {x: 0, y: 10}
+    rare: {x: 0, y: 10}
+    unique: {x: 0, y: 10}
+    epic: {x: 0, y: 10}
+    legend: {x: 0, y: 10}
