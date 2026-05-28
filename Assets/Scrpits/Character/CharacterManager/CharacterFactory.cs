@@ -5,23 +5,23 @@ using UnityEngine;
 
 //캐릭터의 정보를 만드는 장소
 //애는 캐릭터 제작이지 캐릭터 선언이 아니다 즉 캐릭터의 능력치들은 애가 만들고 캐릭터 선언 되는 놈에게 정보를 주는 놈이다
+// 캐릭터 데이터 생성 전용
+// 생성(Instantiate) 안 함
+// 배치 안 함
 public class CharacterFactory : MonoBehaviour
 {
-
     [SerializeField] private List<JobStats> jobStatsList;
-    [SerializeField] private GameObject characterPrefab;
-
     [SerializeField] private TypeData characterTypeData;
+
     private int currentId = 10001;
+
     // None 직업 가져오기
     public JobStats GetDefaultJob()
     {
-
-
         return jobStatsList.Find(j => j.jobType == JobType.None);
     }
 
-    // 데이터 생성
+    // 캐릭터 데이터 생성
     public CharacterData CreateCharacterData()
     {
         JobStats baseJob = GetDefaultJob();
@@ -30,19 +30,31 @@ public class CharacterFactory : MonoBehaviour
             Debug.LogError("None JobStats 없음");
             return null;
         }
-        Grade grade = Randoms.RollGrade();
 
-        CharacterData data = new CharacterData();
-
-        data.id = $"{characterTypeData.prefix}{currentId++}";
         if (characterTypeData == null)
         {
             Debug.LogError("TypeData 연결 안됨");
             return null;
         }
+
+        Grade grade = Randoms.RollGrade();
+
+        CharacterData data = new CharacterData();
+
+        // ID 생성
+        data.id = $"{characterTypeData.prefix}{currentId++}";
+
+        // 기본 정보
         data.jobType = baseJob.jobType;
         data.grade = grade;
 
+        // 외형
+        data.head = GetRandomHead(baseJob);
+        data.top = GetRandomBody(baseJob);
+        data.bottom = GetRandomLeg(baseJob);
+
+
+        // 능력치
         data.hp = Randoms.RandomInt(baseJob.hp.GetRange(grade).x, baseJob.hp.GetRange(grade).y);
         data.mp = Randoms.RandomInt(baseJob.mp.GetRange(grade).x, baseJob.mp.GetRange(grade).y);
 
@@ -56,20 +68,31 @@ public class CharacterFactory : MonoBehaviour
         return data;
     }
 
-    // 캐릭터 생성 (생산만)
-    public void ApplyData(Character character)
+    // 외형 랜덤 선택
+
+
+    private GameObject GetRandomHead(JobStats jobStats)
     {
-        if (character == null)
-        {
-            Debug.LogError("Character 없음");
-            return;
-        }
+        if (jobStats.headPrefab == null || jobStats.headPrefab.Length == 0)
+            return null;
 
-        CharacterData data = CreateCharacterData();
-        if (data == null)
-            return;
+        return jobStats.headPrefab[Random.Range(0, jobStats.headPrefab.Length)];
+    }
 
-        character.SetData(data);
+    private GameObject GetRandomBody(JobStats jobStats)
+    {
+        if (jobStats.bodyPrefab == null || jobStats.bodyPrefab.Length == 0)
+            return null;
+
+        return jobStats.bodyPrefab[Random.Range(0, jobStats.bodyPrefab.Length)];
+    }
+
+    private GameObject GetRandomLeg(JobStats jobStats)
+    {
+        if (jobStats.legPrefab == null || jobStats.legPrefab.Length == 0)
+            return null;
+
+        return jobStats.legPrefab[Random.Range(0, jobStats.legPrefab.Length)];
     }
 
 }

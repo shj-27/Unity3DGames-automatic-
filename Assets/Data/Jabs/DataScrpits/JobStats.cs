@@ -5,7 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Job Stats")]
 public class JobStats : ScriptableObject
 {
+    [Header("¿ÜÇü ÇÁ¸®ÆÕ")]
+
     public JobType jobType;
+    
+
+    public GameObject[] headPrefab;
+    public GameObject[] bodyPrefab;
+    public GameObject[] legPrefab;
 
     public StatRangeByGrade hp;
     public StatRangeByGrade mp;

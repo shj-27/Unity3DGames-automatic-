@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6396266754807019545}
   - component: {fileID: 1969024811800126788}
-  - component: {fileID: 3868362863819841627}
   - component: {fileID: 8652893181891044866}
   m_Layer: 0
   m_Name: CharacterManager
@@ -48,20 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9a61cc9d7c78e348b1ab7e781eb819a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3868362863819841627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551034991171966168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab7efca8476655d47a4e7b99957a8448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSlot: 5
-  addSlot: 0
 --- !u!114 &8652893181891044866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c69cbbb4274384086f34c9c138d14a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRange: 0
-  maxRange: 0
+  jobStatsList: []
+  characterTypeData: {fileID: 0}
 --- !u!1 &3908974458076774383
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +327,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4590732166355963031}
   - component: {fileID: 990493556689111739}
-  - component: {fileID: 5014309379207427073}
   m_Layer: 0
   m_Name: RecallSpawner
   m_TagString: Untagged
@@ -381,22 +365,6 @@ MonoBehaviour:
   shapeType: 3
   size: 1
   boxSize: {x: 1, y: 3, z: 1}
---- !u!114 &5014309379207427073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5628411923628739314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f93a7b1afbec04c45a8fabfc1480c03d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autos: {fileID: 1969024811800126788}
-  inventory: {fileID: 3868362863819841627}
-  characterPrefab: {fileID: 4186702956285386333, guid: 37099b2e61cba6c49b741ae68a2383cb, type: 3}
-  spawnPoint: {fileID: 4590732166355963031}
 --- !u!1 &7047672012260405945
 GameObject:
   m_ObjectHideFlags: 0

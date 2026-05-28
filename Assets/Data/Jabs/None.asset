@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: None
   m_EditorClassIdentifier: 
   jobType: 0
+  headPrefab:
+  - {fileID: 7654569546889103881, guid: ae471a177c161b743b91de26c3de4165, type: 3}
+  - {fileID: 4186702956285386333, guid: 37099b2e61cba6c49b741ae68a2383cb, type: 3}
+  - {fileID: 8998549460985185, guid: 992a49c759b2b084b813b070c213ee91, type: 3}
+  bodyPrefab:
+  - {fileID: 7654569546889103881, guid: ae471a177c161b743b91de26c3de4165, type: 3}
+  - {fileID: 4186702956285386333, guid: 37099b2e61cba6c49b741ae68a2383cb, type: 3}
+  - {fileID: 8998549460985185, guid: 992a49c759b2b084b813b070c213ee91, type: 3}
+  legPrefab:
+  - {fileID: 7654569546889103881, guid: ae471a177c161b743b91de26c3de4165, type: 3}
+  - {fileID: 4186702956285386333, guid: 37099b2e61cba6c49b741ae68a2383cb, type: 3}
+  - {fileID: 8998549460985185, guid: 992a49c759b2b084b813b070c213ee91, type: 3}
   hp:
     normal: {x: 100, y: 150}
     rare: {x: 100, y: 300}
