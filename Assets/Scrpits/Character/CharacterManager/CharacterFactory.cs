@@ -49,12 +49,24 @@ public class CharacterFactory : MonoBehaviour
         data.grade = grade;
 
         // 외형
-        data.head = GetRandomHead(baseJob);
+        HeadData selectedHead = GetRandomHead(baseJob);
+        data.head = selectedHead.headPrefab;
+        data.portraits = selectedHead.portraits;
+        if (selectedHead != null &&
+        selectedHead.portraits != null &&
+        selectedHead.portraits.Length > 0)
+        {
+            data.portrait =
+                selectedHead.portraits[
+                    Random.Range(0, selectedHead.portraits.Length)
+                ];
+        }
         data.top = GetRandomBody(baseJob);
         data.bottom = GetRandomLeg(baseJob);
 
 
         // 능력치
+        
         data.hp = Randoms.RandomInt(baseJob.hp.GetRange(grade).x, baseJob.hp.GetRange(grade).y);
         data.mp = Randoms.RandomInt(baseJob.mp.GetRange(grade).x, baseJob.mp.GetRange(grade).y);
 
@@ -69,14 +81,14 @@ public class CharacterFactory : MonoBehaviour
     }
 
     // 외형 랜덤 선택
-
-
-    private GameObject GetRandomHead(JobStats jobStats)
+    private HeadData GetRandomHead(JobStats jobStats)
     {
-        if (jobStats.headPrefab == null || jobStats.headPrefab.Length == 0)
+        if (jobStats.heads == null || jobStats.heads.Length == 0)
             return null;
 
-        return jobStats.headPrefab[Random.Range(0, jobStats.headPrefab.Length)];
+        return jobStats.heads[
+            Random.Range(0, jobStats.heads.Length)
+        ];
     }
 
     private GameObject GetRandomBody(JobStats jobStats)

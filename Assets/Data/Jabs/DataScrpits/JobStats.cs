@@ -8,9 +8,9 @@ public class JobStats : ScriptableObject
     [Header("¿ÜÇü ÇÁ¸®ÆÕ")]
 
     public JobType jobType;
-    
 
-    public GameObject[] headPrefab;
+
+    public HeadData[] heads;
     public GameObject[] bodyPrefab;
     public GameObject[] legPrefab;
 

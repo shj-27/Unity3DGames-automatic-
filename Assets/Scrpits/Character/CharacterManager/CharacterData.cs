@@ -7,10 +7,13 @@ public class CharacterData
 
     public string id;
 
-    public GameObject appearancePrefab;
+    //public GameObject appearancePrefab;
+    public Sprite portrait;
 
-    //외형 파츠 (추후 확장용)
+    //외형 파츠
     public GameObject head;   // 머리
+    public Sprite[] portraits;   // 그대로 저장 (전체 유지)
+
     public GameObject top;    // 상의
     public GameObject bottom; // 하의
 

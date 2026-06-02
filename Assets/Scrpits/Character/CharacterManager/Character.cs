@@ -71,7 +71,7 @@ public class Character : MonoBehaviour
 
         if (characterData == null)
         {
-            Debug.LogError($"데이터 없음 : {id}");
+            
             return;
         }
         RefreshAppearance();

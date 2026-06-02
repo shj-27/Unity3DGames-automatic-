@@ -66,15 +66,6 @@ public class CharacterInventory : MonoBehaviour
 
         CharacterData data = characters.Find(character => character.id == id);
 
-        if (data != null)
-        {
-            Debug.Log($"찾음 : {data.id}");
-        }
-        else
-        {
-            Debug.LogError($"못 찾음 : {id}");
-        }
-
         return data;
     }
 }
