@@ -17,10 +17,11 @@ public enum SlotState
 /// </summary>
 public enum EntityType
 {
-    Character,  // 플레이어/유닛 캐릭터
-    Item,       // 아이템
-    NPC,        // 일반 NPC
-    Enemy       // 적
+    Character,
+    Friendly,  // 아군
+    Neutral,   // 중립
+    Enemy,     // 적
+    Item        // 아이템
 }
 
 /// <summary>
@@ -32,7 +33,8 @@ public enum CharacterStateType
     Idle = 1,   // 대기 / 정지
     Move = 2,   // 이동 중
     Attack = 3, // 공격 중
-    Gather = 4  // 수집 / 채집 / 작업 상태
+    Gather = 4,  // 수집 / 채집 / 작업 상태
+    Death = 5
 }
 
 /// <summary>
@@ -114,4 +116,28 @@ public enum PartType
     Head,
     Body,
     Leg
+}
+
+/// <summary>
+/// 캐릭터 현재 생각
+/// - 지금 가장 중요하게 판단한 목표
+/// - 욕구와 감정을 바탕으로 결정됨
+/// </summary>
+public enum ThoughtType
+{
+    None = 0,          // 특별한 목표 없음
+
+    SatisfyHunger = 1, // 배고픔 해결
+    Sleep = 2,         // 수면 해결
+    Rest = 3,          // 휴식
+
+    Socialize = 4,     // 대화 및 교류
+    Work = 5,          // 일 또는 생산 활동
+    Train = 6,         // 훈련 및 성장
+
+    Heal = 7,          // 치료
+    SeekSafety = 8,    // 안전 확보
+
+    Fight = 9,         // 전투 수행
+    Escape = 10        // 도주 및 탈출
 }

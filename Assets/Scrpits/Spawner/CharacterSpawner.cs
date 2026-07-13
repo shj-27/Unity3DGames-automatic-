@@ -13,7 +13,7 @@ public class CharacterSpawner : MonoBehaviour
         obj.transform.position = spawnPoint.position;
 
         Character character = obj.GetComponent<Character>();
-        character.SetID(data.id);
+        character.SetID(data.id,data.entityType);
 
         return character;
     }

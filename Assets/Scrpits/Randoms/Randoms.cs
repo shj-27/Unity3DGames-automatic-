@@ -17,7 +17,12 @@ public class Randoms : MonoBehaviour
     /// </summary>
     public static float RandomFloat(float min, float max)
     {
-        return Random.Range(min, max);
+        return Mathf.Round(Random.Range(min, max));
+    }
+
+    public static float RandomFloatFloorOneDecimal(float min, float max)
+    {
+        return Mathf.Floor(Random.Range(min, max) * 10f) / 10f;
     }
 
     public static Grade RollGrade()

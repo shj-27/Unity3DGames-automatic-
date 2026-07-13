@@ -62,5 +62,19 @@ public class CharacterManager : MonoBehaviour
         spawner.Spawn(data);
     }
 
-    
+    public bool TryGetCharacterCondition(string id, out float hunger, out float fatigue)
+    {
+        hunger = 0f;
+        fatigue = 100f;
+
+        CharacterData data = inventory.GetCharacterByID(id);
+
+        if (data == null)
+            return false;
+
+        hunger = data.hunger;
+        fatigue = data.fatigue;
+
+        return true;
+    }
 }

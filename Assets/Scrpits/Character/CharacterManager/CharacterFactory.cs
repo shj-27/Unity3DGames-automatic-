@@ -43,7 +43,7 @@ public class CharacterFactory : MonoBehaviour
 
         // ID 생성
         data.id = $"{characterTypeData.prefix}{currentId++}";
-
+        data.entityType = characterTypeData.entityType;
         // 기본 정보
         data.jobType = baseJob.jobType;
         data.grade = grade;
@@ -64,9 +64,13 @@ public class CharacterFactory : MonoBehaviour
         data.top = GetRandomBody(baseJob);
         data.bottom = GetRandomLeg(baseJob);
 
-
+        // 신체
+        data.eyes = Randoms.RandomFloatFloorOneDecimal(
+            baseJob.eyes.GetRange(grade).x,
+            baseJob.eyes.GetRange(grade).y
+        );
         // 능력치
-        
+
         data.hp = Randoms.RandomInt(baseJob.hp.GetRange(grade).x, baseJob.hp.GetRange(grade).y);
         data.mp = Randoms.RandomInt(baseJob.mp.GetRange(grade).x, baseJob.mp.GetRange(grade).y);
 
@@ -76,6 +80,9 @@ public class CharacterFactory : MonoBehaviour
         data.intel = Randoms.RandomInt(baseJob.intel.GetRange(grade).x, baseJob.intel.GetRange(grade).y);
         data.wis = Randoms.RandomInt(baseJob.wis.GetRange(grade).x, baseJob.wis.GetRange(grade).y);
         data.cha = Randoms.RandomInt(baseJob.cha.GetRange(grade).x, baseJob.cha.GetRange(grade).y);
+
+        data.fatigue = 100f;
+        data.hunger = 0f;
 
         return data;
     }

@@ -14,12 +14,16 @@ public class JobStats : ScriptableObject
     public GameObject[] bodyPrefab;
     public GameObject[] legPrefab;
 
-    public StatRangeByGrade hp;
-    public StatRangeByGrade mp;
+    // ===== Float 능력치 =====
+    public FloatRangeByGrade eyes;
 
-    public StatRangeByGrade str;
-    public StatRangeByGrade agi;
-    public StatRangeByGrade intel;
-    public StatRangeByGrade wis;
-    public StatRangeByGrade cha;
+    // ===== Int 능력치 =====
+    public IntRangeByGrade hp;
+    public IntRangeByGrade mp;
+
+    public IntRangeByGrade str;
+    public IntRangeByGrade agi;
+    public IntRangeByGrade intel;
+    public IntRangeByGrade wis;
+    public IntRangeByGrade cha;
 }
