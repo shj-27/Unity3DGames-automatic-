@@ -7,8 +7,22 @@ public class CharacterInventoryUI : MonoBehaviour
     [Header("Data")]
     [SerializeField] private CharacterInventory inventory;
 
+
+    [SerializeField]
+    private GameObject slotParent;
+
     [Header("UI")]
     [SerializeField] private List<CharacterSlotButton> slots = new();
+
+    private void OnValidate()
+    {
+        if (slotParent == null)
+            return;
+        slots.Clear();
+        slots = new List<CharacterSlotButton>(
+            slotParent.GetComponentsInChildren<CharacterSlotButton>(true)
+        );
+    }
 
     private void OnEnable()
     {
