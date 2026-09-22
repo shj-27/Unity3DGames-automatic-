@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,46 +10,60 @@ public class CharacterInventoryUI : MonoBehaviour
     [SerializeField]
     private GameObject slotParent;
 
+
     [Header("UI")]
-    [SerializeField] private List<CharacterSlotButton> slots = new();
+    [SerializeField]
+    private List<CharacterSlotButton> slots = new();
+
+
 
     private void OnValidate()
     {
         if (slotParent == null)
             return;
+
+
         slots.Clear();
+
+
         slots = new List<CharacterSlotButton>(
             slotParent.GetComponentsInChildren<CharacterSlotButton>(true)
         );
     }
 
+
+
     private void OnEnable()
     {
-        
+
     }
 
-    // 인벤토리 UI 갱신
+
+
+    /// <summary>
+    /// 캐릭터 인벤토리 UI 갱신
+    ///
+    /// CharacterInventory는 전체 데이터를 가지고 있지만
+    /// 슬롯 UI는 캐릭터 기본 정보만 필요하기 때문에
+    /// CharacterData만 전달한다.
+    /// </summary>
     public void Refresh(CharacterInventory inventory)
     {
-       
+        List<CharacterCreateData> list =
+            inventory.Characters;
 
-        foreach (CharacterData data in inventory.Characters)
-        {
-            CreateSlot(data);
-        }
-    }
-
-    // 슬롯 생성
-    private void CreateSlot(CharacterData data)
-    {
-        var list = inventory.Characters;
 
         for (int i = 0; i < slots.Count; i++)
         {
             if (i < list.Count)
             {
                 slots[i].gameObject.SetActive(true);
-                slots[i].SetData(list[i]);
+
+
+                // 전체 데이터 중 UI 표시용 데이터만 전달
+                slots[i].SetData(
+                    list[i].characterData
+                );
             }
             else
             {
@@ -59,14 +72,16 @@ public class CharacterInventoryUI : MonoBehaviour
         }
     }
 
-    // 기존 슬롯 삭제
+
+
+    /// <summary>
+    /// 슬롯 초기화
+    /// </summary>
     private void Clear()
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            Destroy(slots[i].gameObject);
+            slots[i].gameObject.SetActive(false);
         }
-
-        slots.Clear();
     }
 }

@@ -115,3 +115,148 @@ public enum PartType
     Body,
     Leg
 }
+
+/// <summary>
+/// 아이템의 현재 소유 상태
+/// 아이템의 종류가 아니라 현재 아이템이 어떤 상태로 존재하는지를 나타냄
+/// </summary>
+public enum ItemOwnerState
+{
+    None = 0,       // 상태 없음 / 초기 상태
+    Ground = 1,     // 주인 없음 / 길바닥에 존재
+    Drop = 2,       // 드랍된 아이템
+    Storage = 3     // 창고에 보관된 아이템
+}
+
+/// <summary>
+/// 아이템의 종류
+/// 아이템이 어떤 용도로 사용되는지를 나타냄
+/// </summary>
+public enum ItemType
+{
+    None = 0,       // 종류 없음 / 초기 상태
+    Consumable = 1, // 소모품
+    Equipment = 2,  // 장비
+    Material = 3,   // 재료
+    Etc = 4,        // 기타
+    Event = 5       // 이벤트 아이템
+}
+
+/// <summary>
+/// 캐릭터 능력치 목록
+/// 아이템 효과 및 캐릭터 능력치 변경 등에 사용
+/// </summary>
+public class StatList
+{
+    /// <summary>
+    /// 캐릭터의 기본 능력치
+    /// CharacterData의 능력치와 대응
+    /// </summary>
+    public enum BasicStatList
+    {
+        None,
+        HP,
+        MP,
+        STR,
+        AGI,
+        INTEL,
+        WIS,
+        CHA
+    }
+}
+
+/// <summary>
+/// 캐릭터 상태 이상 목록
+/// 소모품 효과 및 상태 이상 적용/회복 등에 사용
+/// </summary>
+public class StatusEffectList
+{
+    /// <summary>
+    /// 캐릭터에게 적용되는 상태 이상
+    /// </summary>
+    public enum StatusEffect
+    {
+        None = 0,      // 상태 이상 없음
+        Poison = 1,    // 중독
+        Confusion = 2, // 혼란
+        Paralysis = 3, // 마비
+        Silence = 4,   // 침묵 (마법 관련)
+        Burn = 5       // 화상
+    }
+}
+
+/// <summary>
+/// 장비 종류 목록
+/// 장비 아이템이 어떤 부위에 해당하는지를 나타냄
+/// </summary>
+public class EquipmentList
+{
+    /// <summary>
+    /// 장비 부위
+    /// </summary>
+    public enum EquipmentType
+    {
+        None = 0,       // 장비 종류 없음
+        Weapon = 1,     // 무기
+        Armor = 2,      // 아머
+        Shoes = 3,      // 신발
+        Accessory = 4   // 악세사리
+    }
+}
+
+/// <summary>
+/// 장비 고유 능력치 목록
+/// </summary>
+public class EquipmentStatList
+{
+    /// <summary>
+    /// 장비에 적용되는 고유 능력치
+    /// </summary>
+    public enum EquipmentStat
+    {
+        None = 0,
+
+        // 공격 관련
+        PhysicalDamage = 1,   // 물리 공격력
+        MagicDamage = 2,      // 마법 공격력
+
+        // 방어 관련
+        PhysicalDefense = 3,  // 물리 방어력
+        MagicResistance = 4,  // 마법 저항력
+
+        // 이동 관련
+        MoveSpeed = 5         // 이동 속도
+    }
+}
+
+/// <summary>
+/// 기타 아이템의 세부 종류
+/// </summary>
+public class EtcItemList
+{
+    /// <summary>
+    /// 기타 아이템 종류
+    /// </summary>
+    public enum EtcType
+    {
+        None = 0,       // 종류 없음
+        Material = 1,   // 재료용
+        Junk = 2,       // 잡템용
+        Quest = 3       // 퀘스트용
+    }
+}
+
+/// <summary>
+/// 재료 아이템의 종류
+/// </summary>
+public class MaterialItemList
+{
+    public enum MaterialType
+    {
+        None = 0,
+        Ore = 1,       // 광석
+        Lumber = 2,    // 목재
+        Fiber = 3,     // 섬유
+        Food = 4       // 식욕용
+    }
+}
