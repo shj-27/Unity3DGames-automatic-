@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class StatRangeByGrade
+public class IntRangeByGrade
 {
     public Vector2Int normal;
     public Vector2Int rare;
@@ -23,6 +23,32 @@ public class StatRangeByGrade
             default:
                 Debug.LogError("肋给等 Grade");
                 return Vector2Int.zero;
+        }
+    }
+}
+
+// float 裹困
+[System.Serializable]
+public class FloatRangeByGrade
+{
+    public Vector2 normal;
+    public Vector2 rare;
+    public Vector2 unique;
+    public Vector2 epic;
+    public Vector2 legend;
+
+    public Vector2 GetRange(Grade grade)
+    {
+        switch (grade)
+        {
+            case Grade.Normal: return normal;
+            case Grade.Rare: return rare;
+            case Grade.Unique: return unique;
+            case Grade.Epic: return epic;
+            case Grade.Legend: return legend;
+            default:
+                Debug.LogError("肋给等 Grade");
+                return Vector2.zero;
         }
     }
 }

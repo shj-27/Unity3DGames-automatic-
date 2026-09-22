@@ -6,7 +6,7 @@ public class CharacterData
 {
 
     public string id;
-
+    public EntityType entityType;
     //public GameObject appearancePrefab;
     public Sprite portrait;
 
@@ -17,6 +17,14 @@ public class CharacterData
     public GameObject top;    // 상의
     public GameObject bottom; // 하의
 
+    // ===== 신체 =====
+    public float eyes;   // 시야
+    // public float hearing; // 청각
+    // public float smell;   // 후각
+    // public float speed;   // 이동 능력
+    // public float reach;   // 팔 길이
+
+    // ===== 능력치 =====
     public int hp;
     public int mp;
 
@@ -26,6 +34,12 @@ public class CharacterData
     public int wis;
     public int cha;
 
+    public float moveSpeed; // 이동 속도
+
     public Grade grade;
     public JobType jobType;
+
+    // ===== 욕구 =====
+    public float fatigue = 100f; // 피로도 (100 = 완전 휴식)
+    public float hunger = 0f;    // 배고픔 (0 = 배부름)
 }
