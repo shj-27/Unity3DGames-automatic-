@@ -1,21 +1,20 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class CharacterData
 {
-
     public string id;
 
-    //public GameObject appearancePrefab;
     public Sprite portrait;
 
-    //외형 파츠
-    public GameObject head;   // 머리
-    public Sprite[] portraits;   // 그대로 저장 (전체 유지)
+    // 외형 파츠
+    public GameObject head;
+    public Sprite[] portraits;
 
-    public GameObject top;    // 상의
-    public GameObject bottom; // 하의
+    public GameObject top;
+    public GameObject bottom;
 
     public int hp;
     public int mp;
@@ -28,4 +27,19 @@ public class CharacterData
 
     public Grade grade;
     public JobType jobType;
+
+    // 캐릭터가 사용할 행동
+    [NonSerialized]
+    public Dictionary<CharacterActionType, ICharacterAction> actions
+        = new Dictionary<CharacterActionType, ICharacterAction>();
+
+    /// <summary>
+    /// 캐릭터가 사용할 행동 등록
+    /// </summary>
+    public void AddAction(
+        CharacterActionType type,
+        ICharacterAction action)
+    {
+        actions[type] = action;
+    }
 }

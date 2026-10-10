@@ -24,6 +24,19 @@ public enum EntityType
 }
 
 /// <summary>
+/// 캐릭터의 신체 및 이동 형태
+/// 행동 구현 시 이동 방식이나 필요한 행동을 구분하는 데 사용
+/// </summary>
+public enum CharacterBodyType
+{
+    None = 0,          // 형태 없음
+
+    Biped = 1,         // 2족 보행
+    Quadruped = 2,     // 4족 보행
+    NoLegs = 3         // 다리 없음
+}
+
+/// <summary>
 /// 캐릭터 행동 상태 (AI / 애니메이션 / 상태머신용)
 /// </summary>
 public enum CharacterStateType
@@ -259,4 +272,173 @@ public class MaterialItemList
         Fiber = 3,     // 섬유
         Food = 4       // 식욕용
     }
+}
+
+/// <summary>
+/// 캐릭터의 큰 행동 종류
+/// </summary>
+public enum CharacterActionType
+{
+    None = 0,
+
+    /// <summary>
+    /// 특별한 행동을 하지 않고 대기하는 상태
+    /// </summary>
+    Idle = 1,
+
+    /// <summary>
+    /// 목적지를 향해 이동하는 행동
+    /// </summary>
+    Move = 2,
+
+    /// <summary>
+    /// 대상에게 공격을 수행하는 행동
+    /// </summary>
+    Attack = 3,
+
+    /// <summary>
+    /// 자원이나 대상을 채집하는 행동
+    /// </summary>
+    Gather = 4,
+
+    /// <summary>
+    /// 재료를 이용하여 아이템 등을 제작하는 행동
+    /// </summary>
+    Craft = 5,
+
+    /// <summary>
+    /// 피로 등을 회복하기 위해 휴식하는 행동
+    /// </summary>
+    Rest = 6,
+
+    /// <summary>
+    /// 다른 캐릭터와 상호작용하는 행동
+    /// </summary>
+    Talk = 7,
+
+    /// <summary>
+    /// 캐릭터가 취미나 개인적인 활동을 하는 행동
+    /// </summary>
+    Hobby = 8
+}
+
+/// <summary>
+/// 캐릭터 행동 관련 Enum 모음
+/// 
+/// 실제 행동은 각각의 Action 클래스에서 담당하고,
+/// 여기서는 해당 행동에서 사용되는 세부 종류만 정의한다.
+/// </summary>
+public class CharacterAction
+{
+    /// <summary>
+    /// 이동 행동의 세부 종류
+    /// </summary>
+    public enum MoveType
+    {
+        None = 0,
+
+        // 일반적인 속도로 이동
+        Walk = 1,
+
+        // 빠른 속도로 이동
+        Run = 2
+    }
+
+    /// <summary>
+    /// 공격 행동의 세부 종류
+    /// </summary>
+    public enum AttackType
+    {
+        None = 0,
+
+        // 기본적인 일반 공격
+        Basic = 1,
+
+        // 스킬을 이용한 공격
+        Skill = 2
+    }
+
+    /// <summary>
+    /// 채집 행동의 세부 종류
+    /// </summary>
+    public enum GatherType
+    {
+        None = 0,
+
+        // 나무 채집
+        Wood = 1,
+
+        // 광석 채집
+        Ore = 2,
+
+        // 식물이나 약초 등의 채집
+        Plant = 3
+    }
+
+    /// <summary>
+    /// 제작 행동의 세부 종류
+    /// </summary>
+    public enum CraftType
+    {
+        None = 0,
+
+        // 새로운 아이템 제작
+        Create = 1,
+
+        // 재료를 다른 재료나 아이템으로 가공
+        Process = 2
+    }
+
+    /// <summary>
+    /// 휴식 행동의 세부 종류
+    /// </summary>
+    public enum RestType
+    {
+        None = 0,
+
+        // 앉아서 휴식
+        Sit = 1,
+
+        // 누워서 휴식
+        Lie = 2
+    }
+
+    /// <summary>
+    /// 대화 행동의 세부 종류
+    /// </summary>
+    public enum TalkType
+    {
+        None = 0,
+
+        // 일반적인 대화
+        Conversation = 1,
+
+        // 인사
+        Greeting = 2,
+
+        // 설득
+        Persuade = 3
+    }
+
+    /// <summary>
+    /// 취미 행동의 세부 종류
+    /// </summary>
+    public enum HobbyType
+    {
+        None = 0,
+
+        // 독서
+        Reading = 1,
+
+        // 공부
+        Study = 2,
+
+        // 낚시
+        Fishing = 3,
+
+        // 악기 연주
+        PlayingMusic = 4
+    }
+
+
 }

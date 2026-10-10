@@ -121,4 +121,6 @@ public class CharacterManager : MonoBehaviour
 
         Debug.Log($"가방에 있는 캐릭터 확인: {characterId}");
     }
+
+
 }

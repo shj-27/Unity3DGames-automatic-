@@ -8,6 +8,7 @@ using UnityEngine;
 /// - 캐릭터 데이터 생성
 /// - 장비 데이터 생성
 /// - 개인 인벤토리 데이터 생성
+/// - 캐릭터가 사용할 기본 행동 데이터 구성
 ///
 /// 주의:
 /// - 캐릭터 오브젝트 생성(Instantiate) 안 함
@@ -20,6 +21,9 @@ public class CharacterFactory : MonoBehaviour
 {
     [SerializeField] private List<JobStats> jobStatsList;
     [SerializeField] private TypeData characterTypeData;
+
+    // 기본 행동을 등록하고 관리하는 Manager
+    [SerializeField] private CharacterActionManager actionManager;
 
     private int currentId = 10001;
 
@@ -39,6 +43,7 @@ public class CharacterFactory : MonoBehaviour
     /// 
     /// 생성 결과:
     /// - 캐릭터 기본 데이터
+    /// - 캐릭터가 사용할 기본 행동
     /// - 장비 데이터
     /// - 개인 소지품 데이터
     /// 
@@ -60,57 +65,115 @@ public class CharacterFactory : MonoBehaviour
             return null;
         }
 
+        if (actionManager == null)
+        {
+            Debug.LogError("CharacterActionManager 연결 안됨");
+            return null;
+        }
 
+
+        // -----------------------------
         // 캐릭터 생성 결과 데이터
-        CharacterCreateData result = new CharacterCreateData();
+        // -----------------------------
+
+        CharacterCreateData result =
+            new CharacterCreateData();
 
 
         // -----------------------------
         // 캐릭터 기본 데이터 생성
         // -----------------------------
 
-        CharacterData characterData = new CharacterData();
+        CharacterData characterData =
+            new CharacterData();
 
 
+        // -----------------------------
+        // 기본 행동 데이터 구성
+        // -----------------------------
+
+        // CharacterActionManager에 등록되어 있는
+        // 기본 행동들을 가져온다.
+        Dictionary<CharacterActionType, ICharacterAction> actions =
+            actionManager.GetDefaultActions();
+
+
+        // Factory가 받아온 기본 행동들을
+        // 현재 생성 중인 CharacterData에 전달한다.
+        foreach (
+            KeyValuePair<CharacterActionType, ICharacterAction> action
+            in actions)
+        {
+            characterData.AddAction(
+                action.Key,
+                action.Value
+            );
+        }
+
+
+        // -----------------------------
         // ID 생성
+        // -----------------------------
+
         characterData.id =
             $"{characterTypeData.prefix}{currentId++}";
 
 
-        // 등급 결정
-        Grade grade = Randoms.RollGrade();
+        // -----------------------------
+        // 등급 및 직업 설정
+        // -----------------------------
 
-        characterData.grade = grade;
-        characterData.jobType = baseJob.jobType;
+        Grade grade =
+            Randoms.RollGrade();
 
+        characterData.grade =
+            grade;
+
+        characterData.jobType =
+            baseJob.jobType;
 
 
         // -----------------------------
         // 외형 데이터 생성
         // -----------------------------
 
-        HeadData selectedHead = GetRandomHead(baseJob);
+        HeadData selectedHead =
+            GetRandomHead(baseJob);
 
         if (selectedHead != null)
         {
-            characterData.head = selectedHead.headPrefab;
-            characterData.portraits = selectedHead.portraits;
+            // 머리 외형
+            characterData.head =
+                selectedHead.headPrefab;
+
+            // 해당 머리의 전체 초상화 저장
+            characterData.portraits =
+                selectedHead.portraits;
 
 
+            // 초상화 중 하나를 랜덤으로 선택
             if (selectedHead.portraits != null &&
                 selectedHead.portraits.Length > 0)
             {
                 characterData.portrait =
                     selectedHead.portraits[
-                        Random.Range(0, selectedHead.portraits.Length)
+                        Random.Range(
+                            0,
+                            selectedHead.portraits.Length
+                        )
                     ];
             }
         }
 
 
-        characterData.top = GetRandomBody(baseJob);
-        characterData.bottom = GetRandomLeg(baseJob);
+        // 상의 랜덤 선택
+        characterData.top =
+            GetRandomBody(baseJob);
 
+
+        // 하의 랜덤 선택
+        characterData.bottom =
+            GetRandomLeg(baseJob);
 
 
         // -----------------------------
@@ -166,7 +229,6 @@ public class CharacterFactory : MonoBehaviour
             );
 
 
-
         // -----------------------------
         // 장비 데이터 생성
         // -----------------------------
@@ -175,7 +237,6 @@ public class CharacterFactory : MonoBehaviour
         // 모든 슬롯 null 상태
         CharacterEquipmentData equipmentData =
             new CharacterEquipmentData();
-
 
 
         // -----------------------------
@@ -187,25 +248,31 @@ public class CharacterFactory : MonoBehaviour
             new CharacterPersonalInventoryData();
 
 
-
         // -----------------------------
         // 결과 저장
         // -----------------------------
 
-        result.characterData = characterData;
-        result.equipmentData = equipmentData;
-        result.inventoryData = inventoryData;
+        result.characterData =
+            characterData;
+
+        result.equipmentData =
+            equipmentData;
+
+        result.inventoryData =
+            inventoryData;
 
 
         return result;
     }
 
 
-
     // -----------------------------
     // 외형 랜덤 선택
     // -----------------------------
 
+    /// <summary>
+    /// JobStats에 등록된 머리 중 하나를 랜덤으로 선택
+    /// </summary>
     private HeadData GetRandomHead(JobStats jobStats)
     {
         if (jobStats.heads == null ||
@@ -214,11 +281,17 @@ public class CharacterFactory : MonoBehaviour
 
 
         return jobStats.heads[
-            Random.Range(0, jobStats.heads.Length)
+            Random.Range(
+                0,
+                jobStats.heads.Length
+            )
         ];
     }
 
 
+    /// <summary>
+    /// JobStats에 등록된 상의 중 하나를 랜덤으로 선택
+    /// </summary>
     private GameObject GetRandomBody(JobStats jobStats)
     {
         if (jobStats.bodyPrefab == null ||
@@ -227,11 +300,17 @@ public class CharacterFactory : MonoBehaviour
 
 
         return jobStats.bodyPrefab[
-            Random.Range(0, jobStats.bodyPrefab.Length)
+            Random.Range(
+                0,
+                jobStats.bodyPrefab.Length
+            )
         ];
     }
 
 
+    /// <summary>
+    /// JobStats에 등록된 하의 중 하나를 랜덤으로 선택
+    /// </summary>
     private GameObject GetRandomLeg(JobStats jobStats)
     {
         if (jobStats.legPrefab == null ||
@@ -240,7 +319,10 @@ public class CharacterFactory : MonoBehaviour
 
 
         return jobStats.legPrefab[
-            Random.Range(0, jobStats.legPrefab.Length)
+            Random.Range(
+                0,
+                jobStats.legPrefab.Length
+            )
         ];
     }
 }
