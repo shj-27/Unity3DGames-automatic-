@@ -21,7 +21,7 @@ public class ConsumableItemData
     /// </summary>
     public Sprite itemSprite;
 
-    public StatEffectData[] statEffects;
+    public StatEffectItemData[] statEffects;
 
 
     /// <summary>

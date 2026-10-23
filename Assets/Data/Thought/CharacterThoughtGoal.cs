@@ -13,7 +13,28 @@ using UnityEngine;
 /// - 휴식
 /// - 작업
 /// </summary>
+
+/// <summary>
+/// 캐릭터가 생각하는 목표 데이터
+/// </summary>
+[CreateAssetMenu(fileName = "CharacterThoughtGoal", menuName = "Character/Thought Goal")]
 public class CharacterThoughtGoal : ScriptableObject
 {
+    // 누가 (Who)
+    public string who;
 
+    // 언제 (When)
+    public string when;
+
+    // 어디서 (Where)
+    public string where;
+
+    // 무엇을 (What)
+    public string what;
+
+    // 어떻게 (How)
+    public string how;
+
+    // 왜 (Why)
+    public string why;
 }

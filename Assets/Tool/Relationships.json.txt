@@ -1,0 +1,50 @@
+
+{
+  "Categories": [
+    {
+      "Name": "Family",
+      "SubCategories": [
+        { "Name": "Mother" },
+        { "Name": "Father" },
+        { "Name": "Son" },
+        { "Name": "Daughter" }
+      ]
+    },
+    {
+      "Name": "Relatives",
+      "SubCategories": [
+        { "Name": "Grandfather" },
+        { "Name": "Grandmother" },
+        { "Name": "Uncle" },
+        { "Name": "MaternalUncle" },
+        { "Name": "Aunt" },
+        { "Name": "PaternalAunt" }
+      ]
+    },
+    {
+      "Name": "SocialRelationships",
+      "SubCategories": [
+        { "Name": "Lover" },
+        { "Name": "Friend" },
+        { "Name": "ChildhoodFriend" }
+      ]
+    },
+    {
+      "Name": "GrudgeRelationships",
+      "SubCategories": [
+        { "Name": "Benefactor" },
+        { "Name": "Nemesis" }
+      ]
+    },
+    {
+      "Name": "PartyRoles",
+      "SubCategories": [
+        { "Name": "Leader" },
+        { "Name": "Tank" },
+        { "Name": "Scout" },
+        { "Name": "Support" },
+        { "Name": "DPS" }
+      ]
+    }
+  ]
+}

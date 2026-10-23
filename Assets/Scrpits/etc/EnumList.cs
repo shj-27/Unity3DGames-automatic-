@@ -442,3 +442,51 @@ public class CharacterAction
 
 
 }
+
+namespace RelationshipType
+{
+    public enum Family
+    {
+        None = 0,
+        Mother,
+        Father,
+        Son,
+        Daughter
+    }
+
+    public enum Relatives
+    {
+        None = 0,
+        Grandfather,
+        Grandmother,
+        Uncle,
+        MaternalUncle,
+        Aunt,
+        PaternalAunt
+    }
+
+    public enum SocialRelationships
+    {
+        None = 0,
+        Lover,
+        Friend,
+        ChildhoodFriend
+    }
+
+    public enum GrudgeRelationships
+    {
+        None = 0,
+        Benefactor,
+        Nemesis
+    }
+
+    public enum PartyRoles
+    {
+        None = 0,
+        Leader,
+        Tank,
+        Scout,
+        Support,
+        DPS
+    }
+}

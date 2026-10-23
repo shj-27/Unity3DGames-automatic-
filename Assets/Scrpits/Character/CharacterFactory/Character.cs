@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,18 +9,26 @@ public class Character : MonoBehaviour
     private bool isInitialized = false;
     private CharacterThought thought;
 
+
     // 캐릭터 전체 데이터
     private CharacterCreateData characterCreateData;
+
+    // 외부에서 캐릭터 전체 데이터를 읽기만 가능
+    public CharacterCreateData Data => characterCreateData;
 
 
     // 외부에서 읽기만 가능
     public string ID => id;
 
+    // 캐릭터의 기본 생각 목표 목록
+    public CharacterThoughtGoal[] basicThoughtGoals;
 
+    // 캐릭터의 생각 목표 목록
+    public CharacterThoughtGoal[] additionalThoughtGoals;
 
     private void Awake()
     {
-        
+
         thought = gameObject.AddComponent<CharacterThought>();
 
         Debug.Log(
@@ -183,5 +192,12 @@ public class Character : MonoBehaviour
             $"행동 부여 받음: {type} | " +
             $"Action: {action.GetType().Name}"
         );
+    }
+
+    private IEnumerator StartThoughtCoroutine()
+    {
+        yield return new WaitForSeconds(2f);
+
+        //thought.FormulateGoals();
     }
 }

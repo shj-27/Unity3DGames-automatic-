@@ -4,7 +4,7 @@ using System;
 /// 아이템이 적용하는 능력치 효과
 /// </summary>
 [Serializable]
-public class StatEffectData
+public class StatEffectItemData
 {
     /// <summary>
     /// 적용할 캐릭터 기본 능력치

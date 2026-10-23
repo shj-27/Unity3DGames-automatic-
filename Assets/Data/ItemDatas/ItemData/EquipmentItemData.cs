@@ -29,7 +29,7 @@ public class EquipmentItemData
     public bool isCursed;
 
 
-    public StatEffectData[] statEffects;
+    public StatEffectItemData[] statEffects;
 
 
     /// <summary>

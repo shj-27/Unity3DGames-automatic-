@@ -614,7 +614,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.999996, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: -20.000008, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15639874
@@ -1418,7 +1418,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: 0, y: -55.00006}
   m_SizeDelta: {x: 0, y: -110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44904849
@@ -9328,8 +9328,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1000K
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -34895,7 +34895,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.999996, y: 0}
+  m_AnchoredPosition: {x: -10, y: 0}
   m_SizeDelta: {x: -20.000008, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1030364045
@@ -44121,6 +44121,8 @@ MonoBehaviour:
   characters:
   - characterData:
       id: 
+      lineageName: 
+      givenName: 
       portrait: {fileID: 0}
       head: {fileID: 0}
       portraits: []
@@ -44135,6 +44137,14 @@ MonoBehaviour:
       cha: 0
       grade: 0
       jobType: 0
+      familyAffiliation: 
+      groupAffiliation: 
+      family: 0
+      relatives: 0
+      socialRelationships: 0
+      grudgeRelationships: 0
+      partyRoles: 0
+      personalityData: {fileID: 0}
 --- !u!1 &1361500013
 GameObject:
   m_ObjectHideFlags: 0
@@ -50141,9 +50151,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7860734659749991533}
+  - {fileID: 617993586}
   - {fileID: 1745001978}
   - {fileID: 641997633}
-  - {fileID: 617993586}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1562584568
@@ -72277,6 +72287,8 @@ GameObject:
   - component: {fileID: 1452790737}
   - component: {fileID: 1452790741}
   - component: {fileID: 1452790742}
+  - component: {fileID: 7860734659749991534}
+  - component: {fileID: 7860734659749991535}
   m_Layer: 0
   m_Name: CharacterManager
   m_TagString: Untagged
@@ -72547,7 +72559,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5864ee164727d24418db6dc6f53d484b, type: 2}
   - {fileID: 11400000, guid: eeaa5f7040d09994ab4bdbd955e9abaf, type: 2}
   characterTypeData: {fileID: 11400000, guid: fd07a02b88055a741a0020542cad8de3, type: 2}
+  personalityDatabase: {fileID: 11400000, guid: e29c3c55fbcb64846a5415c98feabef7, type: 2}
   actionManager: {fileID: 617993587}
+  randomNames: {fileID: 7860734659749991534}
 --- !u!65 &5835628839812884994
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -72918,6 +72932,31 @@ Transform:
   - {fileID: 1680634026}
   m_Father: {fileID: 1561167589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7860734659749991534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636481156812896428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f63948c0d9d63164c9f32ffc9d5878b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameJsonReader: {fileID: 7860734659749991535}
+--- !u!114 &7860734659749991535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636481156812896428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f0fc47d31156644aa994ed54f3b823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &7890909441509305405
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72968,7 +73007,7 @@ GameObject:
   - component: {fileID: 749678547669164259}
   - component: {fileID: 4065653819815683791}
   m_Layer: 0
-  m_Name: RecallSpawner
+  m_Name: CharactersSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

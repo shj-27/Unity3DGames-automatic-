@@ -32,4 +32,29 @@ public class Autos : MonoBehaviour
             yield return new WaitForSeconds(interval);
         }
     }
+
+    /// <summary>
+    /// 범용 대기 후 확률에 따라 메서드 실행
+    /// waitTime : 대기 시간
+    /// probability : 메서드1이 실행될 확률 (0~1)
+    /// method1 : 확률에 성공했을 때 실행
+    /// method2 : 확률에 실패했을 때 실행
+    /// </summary>
+    public IEnumerator WaitCoroutine(
+        float waitTime,
+        float probability,
+        Action method1,
+        Action method2)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        if (UnityEngine.Random.value < probability)
+        {
+            method1?.Invoke();
+        }
+        else
+        {
+            method2?.Invoke();
+        }
+    }
 }
