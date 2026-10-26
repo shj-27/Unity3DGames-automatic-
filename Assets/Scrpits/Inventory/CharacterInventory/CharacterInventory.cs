@@ -123,14 +123,36 @@ public class CharacterInventory : MonoBehaviour
     /// </summary>
     public CharacterCreateData GetCharacterByID(string id)
     {
-        Debug.Log($"검색 시작 : {id}");
+        Debug.Log($"[Inventory] 검색 요청 ID: '{id}'");
+        Debug.Log($"[Inventory] 현재 보유 수: {characters.Count}");
 
+        for (int i = 0; i < characters.Count; i++)
+        {
+            CharacterCreateData character = characters[i];
 
-        CharacterCreateData character =
-            characters.Find(character =>
-                character.characterData.id == id);
+            if (character == null)
+            {
+                Debug.LogError($"[Inventory] {i}번 데이터가 null");
+                continue;
+            }
 
+            if (character.characterData == null)
+            {
+                Debug.LogError($"[Inventory] {i}번 CharacterData가 null");
+                continue;
+            }
 
-        return character;
+            Debug.Log(
+                $"[Inventory] 목록 {i}번 ID: '{character.characterData.id}'");
+
+            if (character.characterData.id == id)
+            {
+                Debug.Log($"[Inventory] 검색 성공: '{id}', 목록 위치: {i}");
+                return character;
+            }
+        }
+
+        Debug.LogError($"[Inventory] 검색 실패: '{id}'");
+        return null;
     }
 }

@@ -35,6 +35,12 @@ public class RandomNames : MonoBehaviour
         Initialize();
     }
 
+    public void EnsureInitialized()
+    {
+        if (!isInitialized)
+            Initialize();
+    }
+
     // NameJsonReader의 JSON 정보를 이름 배열로 변환한다.
     private void Initialize()
     {

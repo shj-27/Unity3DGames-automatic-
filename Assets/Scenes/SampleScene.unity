@@ -44118,33 +44118,7 @@ MonoBehaviour:
   data:
     bagTier: 1
     autoCreateTier: 1
-  characters:
-  - characterData:
-      id: 
-      lineageName: 
-      givenName: 
-      portrait: {fileID: 0}
-      head: {fileID: 0}
-      portraits: []
-      top: {fileID: 0}
-      bottom: {fileID: 0}
-      hp: 0
-      mp: 0
-      str: 0
-      agi: 0
-      intel: 0
-      wis: 0
-      cha: 0
-      grade: 0
-      jobType: 0
-      familyAffiliation: 
-      groupAffiliation: 
-      family: 0
-      relatives: 0
-      socialRelationships: 0
-      grudgeRelationships: 0
-      partyRoles: 0
-      personalityData: {fileID: 0}
+  characters: []
 --- !u!1 &1361500013
 GameObject:
   m_ObjectHideFlags: 0
@@ -62333,7 +62307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af90f0155c3558145b0614e99dfbb683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 1358252210}
   slotParent: {fileID: 362303610}
   slots:
   - {fileID: 3663876611388368538}

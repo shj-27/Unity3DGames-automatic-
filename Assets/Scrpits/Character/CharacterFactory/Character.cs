@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CharacterAction;
 
 public class Character : MonoBehaviour
 {
@@ -144,12 +145,7 @@ public class Character : MonoBehaviour
         characterCreateData =
             inventory.GetCharacterByID(id);
 
-        if (characterCreateData == null)
-        {
-            Debug.LogError($"캐릭터 데이터 없음 : {id}");
-            return;
-        }
-
+       
         // Thought가 자신의 캐릭터를 확인
         thought.Identify();
 

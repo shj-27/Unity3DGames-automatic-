@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using CharacterAction;
 /// <summary>
 /// 캐릭터 공용 행동 관리
 ///

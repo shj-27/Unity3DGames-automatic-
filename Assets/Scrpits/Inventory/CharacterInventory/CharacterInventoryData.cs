@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
+using EtcEnumList;
 
 [System.Serializable]
 public class CharacterInventoryData

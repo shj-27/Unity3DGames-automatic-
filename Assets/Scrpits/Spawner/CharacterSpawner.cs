@@ -14,7 +14,7 @@ public class CharacterSpawner : MonoBehaviour
 
         Character character = obj.GetComponent<Character>();
         character.SetID(data.id);
-
+        Debug.Log($"[Spawner] 전달 ID: {data.id}, 설정된 ID: {character.ID}");
         return character;
     }
 }

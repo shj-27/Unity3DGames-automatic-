@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: CharacterProbabilityData
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterProbabilityData
+  humanProbability: 9000
+  raceProbabilities:
+  - raceType: 2
+    probability: 6999
+  - raceType: 3
+    probability: 800
+  - raceType: 4
+    probability: 500
+  - raceType: 5
+    probability: 250
+  - raceType: 6
+    probability: 150
+  - raceType: 7
+    probability: 200
+  - raceType: 8
+    probability: 100
+  - raceType: 9
+    probability: 100
+  - raceType: 10
+    probability: 250
+  - raceType: 11
+    probability: 150
+  - raceType: 12
+    probability: 80
+  - raceType: 13
+    probability: 30
+  - raceType: 14
+    probability: 50
+  - raceType: 15
+    probability: 80
+  - raceType: 16
+    probability: 100
+  - raceType: 17
+    probability: 30
+  - raceType: 18
+    probability: 30
+  - raceType: 19
+    probability: 10
+  - raceType: 20
+    probability: 10
+  - raceType: 21
+    probability: 10
+  - raceType: 22
+    probability: 5
+  - raceType: 23
+    probability: 10
+  - raceType: 24
+    probability: 10
+  - raceType: 25
+    probability: 10
+  - raceType: 26
+    probability: 1
+  - raceType: 27
+    probability: 5
+  - raceType: 28
+    probability: 10
+  - raceType: 29
+    probability: 5
+  - raceType: 30
+    probability: 5
+  - raceType: 31
+    probability: 5
+  - raceType: 32
+    probability: 5
