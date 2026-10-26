@@ -10,13 +10,14 @@ public class CharacterData
 {
     // 캐릭터 ID
     public string id;
-    public GenderType genderType;
+    
+
     // 캐릭터 이름
     public string lineageNameId; // 성씨 JSON ID
     public string lineageName;
     public string givenName;
 
-    public Sprite portrait;
+    public Sprite portrait; //캐릭터 외형
 
     // 외형 파츠
     public Sprite[] portraits;
@@ -37,18 +38,20 @@ public class CharacterData
 
     public Grade grade;
     public JobType jobType;
-    public RaceType raceType;
+    public RaceType raceType;   
 
-    // 캐릭터 소속
+    // 캐릭터 기본정보
     public string familyAffiliation; // 가문 소속 ID
     public string groupAffiliation;  // 집단 소속 ID
+    public GenderType genderType; //성별
+    public int age;
 
     // 캐릭터 관계 데이터
     public Family family;
-    public Relatives relatives;
+    public Relatives relatives; 
     public SocialRelationships socialRelationships;
     public GrudgeRelationships grudgeRelationships;
-    public PartyRoles partyRoles;
+    public PartyRoles partyRoles; 
 
     // 캐릭터 성격 데이터
     public CharacterPersonalityData personalityData;

@@ -12,7 +12,7 @@ public class CharacterFactory : MonoBehaviour
     [SerializeField] private JobStatsDatabase jobStatsDatabase;
     [SerializeField] private TypeData characterTypeData;
     [SerializeField] private CharacterPersonalityDatabase personalityDatabase;
-    [SerializeField] private CharacterProbabilityData probabilityData;
+    [SerializeField] private ProbabilityData probabilityData;
     [SerializeField] private CharacterActionManager actionManager;
     [SerializeField] private RandomNames randomNames;
 

@@ -9,70 +9,102 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 08247b3ec363c8b40801e2136f01d741, type: 3}
   m_Name: CharacterProbabilityData
   m_EditorClassIdentifier: Assembly-CSharp::CharacterProbabilityData
   humanProbability: 9000
+  humanAgeRange: {x: 17, y: 100}
   raceProbabilities:
   - raceType: 2
     probability: 6999
+    ageRange: {x: 14, y: 80}
   - raceType: 3
     probability: 800
+    ageRange: {x: 100, y: 1000}
   - raceType: 4
     probability: 500
+    ageRange: {x: 50, y: 350}
   - raceType: 5
     probability: 250
+    ageRange: {x: 15, y: 60}
   - raceType: 6
     probability: 250
+    ageRange: {x: 100, y: 1000}
   - raceType: 7
     probability: 200
+    ageRange: {x: 100, y: 1000}
   - raceType: 8
     probability: 150
+    ageRange: {x: 100, y: 1500}
   - raceType: 9
     probability: 150
+    ageRange: {x: 18, y: 100}
   - raceType: 10
     probability: 100
+    ageRange: {x: 20, y: 150}
   - raceType: 11
     probability: 100
+    ageRange: {x: 40, y: 500}
   - raceType: 12
     probability: 100
+    ageRange: {x: 18, y: 120}
   - raceType: 13
     probability: 80
+    ageRange: {x: 14, y: 100}
   - raceType: 14
     probability: 80
+    ageRange: {x: 18, y: 200}
   - raceType: 15
     probability: 50
+    ageRange: {x: 18, y: 150}
   - raceType: 16
     probability: 30
+    ageRange: {x: 18, y: 120}
   - raceType: 17
     probability: 30
+    ageRange: {x: 18, y: 150}
   - raceType: 18
     probability: 10
+    ageRange: {x: 30, y: 500}
   - raceType: 19
     probability: 10
+    ageRange: {x: 30, y: 800}
   - raceType: 20
     probability: 10
+    ageRange: {x: 30, y: 1000}
   - raceType: 21
     probability: 10
+    ageRange: {x: 30, y: 2000}
   - raceType: 22
     probability: 10
+    ageRange: {x: 18, y: 2000}
   - raceType: 23
     probability: 10
+    ageRange: {x: 18, y: 2000}
   - raceType: 24
     probability: 10
+    ageRange: {x: 30, y: 3000}
   - raceType: 25
     probability: 10
+    ageRange: {x: 18, y: 300}
   - raceType: 26
     probability: 5
+    ageRange: {x: 30, y: 3000}
   - raceType: 27
     probability: 5
+    ageRange: {x: 20, y: 500}
   - raceType: 28
     probability: 5
+    ageRange: {x: 18, y: 150}
   - raceType: 29
     probability: 5
+    ageRange: {x: 16, y: 100}
   - raceType: 30
     probability: 5
+    ageRange: {x: 18, y: 200}
   - raceType: 31
     probability: 5
+    ageRange: {x: 100, y: 5000}
   - raceType: 32
     probability: 1
+    ageRange: {x: 100, y: 10000}
